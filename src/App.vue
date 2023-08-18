@@ -25,15 +25,10 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
-import Login from './views/Login.vue';
 
 // import {useUserStore} from './stores/user';
 
 // const userStore=useUserStore();
-onMounted( async() => {
-
-});
 
 </script>
 
