@@ -25,6 +25,7 @@ const userStore=useUserStore();
 const databaseStore=useDatabaseStore();
 const qrCode=ref(null);
 const datosRegistro=ref(null);
+const fechaRegistro=ref(null);
 
 // const router=useRouter();
 
@@ -34,21 +35,18 @@ const datosRegistro=ref(null);
 //     datosRegistro.value=await databaseStore.obtenerRegistrado(userStore.userData.uid);
 // }
 
-onMounted( () => {
-    generateQRCode();
-    obtenerDatosRegistro();
-    const fechaRegistro = datosRegistro.fecha_registro.toDate();
-    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'UTC' };
-    const fechaFormateada = fechaRegistro.toLocaleDateString('es-ES', options);
-    console.log('Fecha de registro:', fechaFormateada);
+onMounted( async() => {
+    await obtenerDatosRegistro();
+    generateQRCode(datosRegistro);
 
 });
 
-async function generateQRCode(){
+async function generateQRCode(datosR){
     const userData=JSON.stringify(userStore.userData);
-    const registerData=JSON.stringify(databaseStore.registerData);
+    const registerData=JSON.stringify(datosR.value);
     const combineData={userData, registerData};
     const combineDataString=JSON.stringify(combineData);
+    console.log('regData en el qr ?'+JSON.stringify(combineDataString));
 
     const canvas=await QRCode.toCanvas(combineDataString);
 
@@ -61,6 +59,16 @@ async function generateQRCode(){
 async function obtenerDatosRegistro(){
     const idUser=auth.currentUser.uid;
     datosRegistro.value=await databaseStore.obtenerRegistrado(idUser);
+    fechaRegistro.value = datosRegistro.value.fecha_registro.toDate();
+    console.log("Fecha registro"+datosRegistro.value.fecha_registro.toDate());
+}
+
+function formatearFecha(fecha) {
+    const dia = fecha.getDate().toString().padStart(2, '0');
+    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // Los meses en JavaScript van de 0 a 11
+    const año = fecha.getFullYear();
+
+    return `${dia}/${mes}/${año}`;
 }
 
 // databaseStore.getUrls();

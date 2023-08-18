@@ -18,10 +18,10 @@ const requireAuth=async(to, from, next) => {
 }
 
 const routes= [
-    {path: '/', component: Home, beforeEnter: requireAuth},
-    {path: '/editar/:id',component: Editar, beforeEnter: requireAuth},
-    {path: '/login', component: Login},
-    {path: '/register', component: Register},
+    {path: '/', component: Home, beforeEnter: requireAuth, name: 'Home'},
+    {path: '/editar/:id',component: Editar, beforeEnter: requireAuth, name: 'Editar'},
+    {path: '/login', component: Login, name: 'Login'},
+    {path: '/register', component: Register, name: 'Register'},
 ]
 
 const router=createRouter({
