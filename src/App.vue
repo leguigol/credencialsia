@@ -1,6 +1,6 @@
 <template>
     <a-layout class="custom-layout">
-      <a-layout-header :style="{ backgroundColor: 'white', marginTop: '150px', marginLeft: '20px', marginRight: '20px'}" v-if="!userStore.loadingSession">
+      <a-layout-header :style="{ backgroundColor: 'white', marginTop: '200px', marginLeft: '20px', marginRight: '20px'}" v-if="!userStore.loadingSession">
         <a-menu 
           mode="horizontal"
           :style="{ lineHeight: '64px'}"
@@ -24,7 +24,7 @@
           :style="{
             background: '#fff',
             padding: '24px',
-            minHeight: '280px',
+            minHeight: '200px',
           }"        
         >
           <div v-if="userStore.loadingSession">loading user....</div>
@@ -35,11 +35,17 @@
 
 </template>
 <style>
+body {
+  margin: 0;
+  padding: 0;
+}
 .custom-layout {
+
   background-image: url('./assets/credencial_blanco.JPEG'); /* Cambia la ruta a la imagen */
-  background-size: cover;
-  background-position: center;
+  background-size: 100% auto;
+  background-position: center center;
   min-height: 100vh;
+  background-repeat: no-repeat;
   position: absolute;
   /* Otros estilos si es necesario */
 }
