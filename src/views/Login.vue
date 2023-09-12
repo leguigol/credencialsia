@@ -1,9 +1,6 @@
 <template>
     <a-row>
-        <a-col :xs="{span: 24}" :sm="{span:12, offset:6}" :style="{textAlign: 'center'}">
-            <h1>SIA CLUB</h1>
-        </a-col>    
-        <a-col :xs="{span: 24}" :sm="{span:12, offset:6}">
+        <a-col :span="24">
             <a-form
                 :model="formState"
                 name="basicLogin"

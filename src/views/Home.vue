@@ -4,12 +4,6 @@
             <h1>SIA CLUB</h1>
         </a-col>    
         <a-col :xs="{span: 24}" :sm="{span:12, offset:6}" :style="{textAlign: 'center'}">
-            <!-- <div v-if="datosRegistro">
-              <h2>Apellido y Nombre: {{ datosRegistro.apellido }} {{ datosRegistro.nombre }}</h2>
-              <h2>DNI: {{ datosRegistro.dni }}</h2>
-              <h3>Forma de Suscripción: {{ datosRegistro.forma_suscripcion }}</h3>
-              <p>Fecha de Registro: {{ formatearFecha(datosRegistro.fecha_registro.toDate()) }}</p>
-            </div> -->
             <ul style="list-style: none;">
               <li v-for="item of databaseStore.registerData" :key="item.id">
                 <h2>Apellido y Nombre: {{ item.apellido }} {{ item.nombre }}</h2>

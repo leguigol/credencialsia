@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@unpic/vue": "^0.0.28",
     "ant-design-vue": "^4.0.0-rc.6",
     "firebase": "^10.1.0",
     "nanoid": "^4.0.2",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
     "unplugin-vue-components": "^0.25.1",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vue-responsive-image": "^2.0.0"
   }
 }
